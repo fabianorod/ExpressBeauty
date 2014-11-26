@@ -17,7 +17,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:DropDownList ID="cbxNovoServicos" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cbxNovoServicos_SelectedIndexChanged">
-                    <asp:ListItem>Not selected</asp:ListItem>
+                    <asp:ListItem>Not selected</asp:ListItem><!---->
                 </asp:DropDownList>
             </ContentTemplate>
 
