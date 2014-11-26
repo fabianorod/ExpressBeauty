@@ -18,11 +18,11 @@ namespace ProjetoBackEnd.Model
             this.stringConexao = stringConexao;
         }
 
-        public bool Inserir(Agendamento agendamento)
+        public bool Inserir(Agendamento agendamento, ProfissionalBeleza pbeleza, Servicos servico)
         {
             using (AgendamentoData data = new AgendamentoData(stringConexao))
             {
-                return data.Inserir(agendamento);
+                return data.Inserir(agendamento, pbeleza, servico);
             }
         }
 

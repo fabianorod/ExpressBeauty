@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using ProjetoBackEnd.Entity;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ProjetoBackEnd.Data
 {
@@ -20,22 +21,35 @@ namespace ProjetoBackEnd.Data
             strCnn = stringConexao;
         }
 
-        public bool Inserir(Agendamento agendamento)
+        public bool Inserir(Agendamento agendamento, ProfissionalBeleza pbeleza, Servicos servico)
         {
             bool ok = false;
+            SqlTransaction tran = null;
 
             try
             {
+                tran = Cnn.BeginTransaction();
                 Cmd = new SqlCommand();
                 Cmd.Connection = Cnn;
+                Cmd.Transaction = tran;
+
                 Cmd.CommandText =
-                    @"insert into agendamentos values (@data_agendamento, @data_realizacao, @horario, @status, @cliente_id)";
+                    @"insert into agendamentos values (@data_agendamento, @data_realizacao, @horario, @status, @cliente_id)" +"select @@IDENTITY from agendamentos";
 
                 Cmd.Parameters.AddWithValue("@data_agendamento", agendamento.DataAgendamento);
                 Cmd.Parameters.AddWithValue("@data_realizacao", agendamento.DataRealizacao);
                 Cmd.Parameters.AddWithValue("@horario", agendamento.Horario);
                 Cmd.Parameters.AddWithValue("@status", agendamento.Status);
                 Cmd.Parameters.AddWithValue("@cliente_id", agendamento.Cliente);
+
+                agendamento.Id = Convert.ToInt32(Cmd.ExecuteScalar());
+
+                Cmd.CommandText =
+                    @"insert into agendamentos_servicos values (@agendamento_numero, @servico_id, @profissional_id)";
+
+                Cmd.Parameters.AddWithValue("@agendamento_numero", agendamento.Id);
+                Cmd.Parameters.AddWithValue("@servico_id", servico.Id);
+                Cmd.Parameters.AddWithValue("@profissional_id", pbeleza.Id);
 
                 Cmd.ExecuteNonQuery();
 
@@ -47,6 +61,7 @@ namespace ProjetoBackEnd.Data
                 Console.WriteLine(e.Message);
             }
 
+            tran.Commit();
             return ok;
         }
 
@@ -136,7 +151,7 @@ namespace ProjetoBackEnd.Data
                     agendamento.DataRealizacao = Dr.GetDateTime(2);
                     agendamento.Horario = Dr.GetDateTime(3);
                     agendamento.Status = Dr.GetInt32(4);
-                    agendamento.Cliente = clienteData.Obtem(Dr.GetInt32(6));
+                    agendamento.Cliente = Dr.GetInt32(6);
                 }
             }
 
@@ -175,7 +190,7 @@ namespace ProjetoBackEnd.Data
                     agendamento.DataRealizacao = Dr.GetDateTime(2);
                     agendamento.Horario = Dr.GetDateTime(3);
                     agendamento.Status = Dr.GetInt32(4);
-                    agendamento.Cliente = clienteData.Obtem(Dr.GetInt32(6));
+                    agendamento.Cliente = Dr.GetInt32(6);
 
                     lista.Add(agendamento);
                 }

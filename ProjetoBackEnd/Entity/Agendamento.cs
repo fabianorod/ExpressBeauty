@@ -13,14 +13,14 @@ namespace ProjetoBackEnd.Entity
         public DateTime DataAgendamento { get; set; }
         public DateTime DataRealizacao { get; set; }
         public DateTime Horario { get; set; }
-        public Cliente Cliente { get; set; }
+        public int Cliente { get; set; }
 
         public List<AgendamentoServico> agendamento { get; set; }
 
 
         public Agendamento() { }
 
-        public Agendamento(int id, int status, DateTime datainicial, DateTime datafinal, DateTime horario, Cliente cliente) 
+        public Agendamento(int id, int status, DateTime datainicial, DateTime datafinal, DateTime horario, int cliente) 
         {
             Id = id;
             Status = status;

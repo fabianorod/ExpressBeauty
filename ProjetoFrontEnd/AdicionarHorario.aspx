@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaPrincipal.Master" AutoEventWireup="true" CodeBehind="AdicionarHorario.aspx.cs" Inherits="ProjetoFrontEnd.AdicionarHorario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 318px;
+        }
+        .auto-style2 {
+            width: 107px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
@@ -16,8 +24,8 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:DropDownList ID="cbxNovoServicos" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cbxNovoServicos_SelectedIndexChanged">
-                    <asp:ListItem>Not selected</asp:ListItem><!---->
+                <asp:DropDownList ID="cbxNovoServicos" runat="server" AutoPostBack="True" AppendDataBoundItems="true" OnSelectedIndexChanged="cbxNovoServicos_SelectedIndexChanged">
+                    <asp:ListItem Value="0">Not selected</asp:ListItem>
                 </asp:DropDownList>
             </ContentTemplate>
 
@@ -52,7 +60,7 @@
                         <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
                         <br />
                         <p><asp:Label ID="lblCaracter" runat="server" Text=""></asp:Label></p>
-                        <asp:Button ID="btnAdicionarServico" runat="server" OnClick="btnAdicionarServico_Click" Text="+ Adicionar Serviço" />
+                        <asp:Button ID="btnAdicionarServico" runat="server" OnClick="btnAdicionarServico_Click" Text="+ Add Service" />
                         <p>&nbsp;</p>
                     </div>
                     <div style="float:right; width:250px;">
@@ -81,8 +89,8 @@
         <table class="table table-striped" style="margin-top:20px;">
             <tr>
                 <td>Schedule</td>
-                <td>Wished Service</td>
-                <td>Value</td>
+                <td class="auto-style1">Requested Service</td>
+                <td class="auto-style2">Value</td>
                 <td>Total Value</td>
             </tr>
             <tr>
@@ -90,16 +98,18 @@
                     <!-- Data e hora -->
                     <asp:TextBox ID="tbDataHora" runat="server" Width="150px"></asp:TextBox>
                 </td>
-                <td>
-                    <select multiple id="SelectServicos" style="width:100%;"> 
-                        <!-- Options com os serviços -->
-                    </select>
+                <td class="auto-style1">
+                    
+                    <asp:ListBox ID="lsbServicos" runat="server" Height="96px" Width="312px"></asp:ListBox>
+                    
                 </td>
-                <td id="ColunaValorUnitario">
+                <td id="ColunaValorUnitario" class="auto-style2">
                     <!-- Valor unitário -->
+                    <asp:ListBox ID="lsbValor" runat="server" Height="98px" Width="144px"></asp:ListBox>
                 </td>
                 <td id="ColunaSomatorio">
                     <!-- Valor total -->
+                    <asp:TextBox ID="tbTotal" runat="server" Enabled="False" Width="120px"></asp:TextBox>
                 </td>
             </tr>
        </table>

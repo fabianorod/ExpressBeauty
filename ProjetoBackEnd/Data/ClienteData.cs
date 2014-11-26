@@ -83,8 +83,8 @@ namespace ProjetoBackEnd.Data
         public Cliente Obtem(string nome, string senha)
         {
             Cliente cliente = null;
-            Telefone telefone = null;
-            Email email = null;
+            //Telefone telefone = null;
+            //Email email = null;
             PessoaData pessoaData = new PessoaData(strCnn);
 
             try
@@ -93,9 +93,9 @@ namespace ProjetoBackEnd.Data
                 Cmd.Connection = Cnn;
 
                 Cmd.CommandText =
-                    @"select * from pessoas p, clientes c where p.id = c.pessoa_id and p.nome = @nome and p.senha = @senha";
+                    @"select * from pessoas p, clientes c where p.id = c.pessoa_id and p.nome_usuario = @nome_usuario and p.senha = @senha";
 
-                Cmd.Parameters.AddWithValue("@nome", nome);
+                Cmd.Parameters.AddWithValue("@nome_usuario", nome);
                 Cmd.Parameters.AddWithValue("@senha", senha);
 
                 Dr = Cmd.ExecuteReader();
@@ -103,8 +103,8 @@ namespace ProjetoBackEnd.Data
                 if (Dr.Read())
                 {
                     cliente = new Cliente();
-                    telefone = new Telefone();
-                    email = new Email();
+                    //telefone = new Telefone();
+                    //email = new Email();
 
                     cliente.Id = Dr.GetInt32(0);
                     cliente.Nome = Dr.GetString(1);
@@ -119,12 +119,12 @@ namespace ProjetoBackEnd.Data
                     cliente.Status = Dr.GetInt32(11);
 
                     //codigo para obter telefone
-                    TelefoneData tData = new TelefoneData(strCnn);
-                    cliente.Telefones = tData.ListarPorPessoa(cliente.Id);
-                    //codigo para obter email
+                    //TelefoneData tData = new TelefoneData(strCnn);
+                    //cliente.Telefones = tData.ListarPorPessoa(cliente.Id);
+                    ////codigo para obter email
 
-                    EmailData eData = new EmailData(strCnn);
-                    cliente.Emails = eData.ListarPorPessoa(cliente.Id);
+                    //EmailData eData = new EmailData(strCnn);
+                    //cliente.Emails = eData.ListarPorPessoa(cliente.Id);
 
                 }
             }

@@ -15,7 +15,7 @@ namespace ProjetoFrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Cliente cliente = Session["vendedor"] as Cliente;
+            Cliente cliente = Session["cliente"] as Cliente;
             if (cliente == null)
             {
                 painel.Visible = true;

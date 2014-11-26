@@ -15,10 +15,14 @@ namespace ProjetoFrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregarServicos();
-            cbxHoras.Enabled = false;
-            btnAdicionarServico.Enabled = false;
-            tbDataHora.Enabled = false;
+            if (!IsPostBack)
+            {
+                CarregarServicos();
+                cbxHoras.Enabled = false;
+                btnAdicionarServico.Enabled = false;
+                tbDataHora.Enabled = false;
+            }
+            
         }
 
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)
@@ -29,7 +33,7 @@ namespace ProjetoFrontEnd
             DateTime DataSelecionada = Calendar2.SelectedDate;
             if (DataSelecionada < hoje)
             {
-                lblfuncionario.Text = "Por favor, informe uma data válida.";
+                lblfuncionario.Text = "Please, inform a valid date.";
             }
             else
             {
@@ -70,24 +74,43 @@ namespace ProjetoFrontEnd
 
         protected void cbxNovoServicos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             if (IsPostBack)
             {
+                //cbxPbeleza.Items.Clear();
                 CarregarPbeleza();
             }
         }
 
         protected void btnAdicionarServico_Click(object sender, EventArgs e)
         {
-            //Agendamento agendamento = new Agendamento();
-            //ProfissionalBeleza pbeleza = new ProfissionalBeleza();
-            //Servicos servicos = new Servicos();
-            //AgendamentoServico agendaservicos = new AgendamentoServico();
+            Agendamento agendamento = new Agendamento();
+            ProfissionalBeleza pbeleza = new ProfissionalBeleza();
+            Servicos servicos = new Servicos();
+            Cliente cliente =  Session["cliente"] as Cliente;
 
-            //agendaservicos.Servicos.Id = Convert.ToInt32(cbxNovoServicos.SelectedIndex);
-            //pbeleza.Id = Convert.ToInt32(cbxPbeleza.SelectedIndex);
-            //agendamento.DataRealizacao = Convert.ToDateTime(Calendar2.SelectedDate);
-            //agendamento.DataAgendamento = DateTime.Now.Date;
-            //agendamento.Horario
+            
+
+            pbeleza.Id = Convert.ToInt32(cbxPbeleza.SelectedIndex);
+            
+            servicos.Id = Convert.ToInt32(cbxNovoServicos.SelectedIndex);
+            agendamento.DataRealizacao = Convert.ToDateTime(Calendar2.SelectedDate);
+            agendamento.DataAgendamento = DateTime.Now.Date;
+            agendamento.Horario = Convert.ToDateTime(cbxHoras.SelectedValue);
+            agendamento.Status = 1;
+            agendamento.Cliente = cliente.Id;
+
+            //string strCnn = ConfigurationManager.ConnectionStrings["stringConexao"].ConnectionString;
+
+            //AgendamentoModel aModel = new AgendamentoModel(strCnn);
+
+            //aModel.Inserir(agendamento, pbeleza, servicos);
+
+            tbDataHora.Text = Calendar2.SelectedDate.Date.ToString("dd/MM/yyyy") + " - " + cbxHoras.SelectedValue;
+            lsbServicos.Items.Add(cbxNovoServicos.SelectedItem.ToString());
+           
+
+
         }
 
     }
