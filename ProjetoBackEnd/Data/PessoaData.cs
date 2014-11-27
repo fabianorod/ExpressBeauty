@@ -60,7 +60,7 @@ namespace ProjetoBackEnd.Data
                 else if (pessoa is ProfissionalBeleza)
                 {
                     ProfissionalBeleza pbeleza = pessoa as ProfissionalBeleza;
-                    Cmd.CommandText = @"insert into profissionaisbeleza values (@salario, @tipo_permicao)";
+                    Cmd.CommandText = @"insert into profissionaisbeleza values (@id, @salario, @tipo_permicao)";
 
                     Cmd.Parameters.AddWithValue("@id", pbeleza.Id);
                     Cmd.Parameters.AddWithValue("@salario", pbeleza.Salario);
@@ -91,7 +91,6 @@ namespace ProjetoBackEnd.Data
                 }
                 //codigo para inserir email
 
-                EmailData eData = new EmailData(stringConexao);
                 foreach (Email em in pessoa.Emails)
                 {
                     Cmd.CommandText =

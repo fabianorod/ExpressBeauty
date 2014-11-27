@@ -121,6 +121,24 @@ namespace ProjetoFrontEnd {
         protected global::System.Web.UI.WebControls.Label lblendereco;
         
         /// <summary>
+        /// estado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label estado;
+        
+        /// <summary>
+        /// lblestado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblestado;
+        
+        /// <summary>
         /// cidade control.
         /// </summary>
         /// <remarks>

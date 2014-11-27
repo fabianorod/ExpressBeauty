@@ -10,7 +10,7 @@ namespace ProjetoBackEnd.Entity
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public UF   Uf { get; set; }
+        public string   Uf { get; set; }
 
         public List<Pessoa> Pessoa { get; set; }
 
@@ -18,7 +18,7 @@ namespace ProjetoBackEnd.Entity
 
         public Cidade() { }
  
-        public Cidade(int id, string nome, UF uf)
+        public Cidade(int id, string nome, string uf)
         {
             Id = id;
             Nome = nome;

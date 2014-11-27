@@ -126,7 +126,7 @@ namespace ProjetoBackEnd.Data
 
                     cidade.Id = Dr.GetInt32(0);
                     cidade.Nome = Dr.GetString(1);
-                    cidade.Uf = ufData.Obtem(Dr.GetString(2));
+                    cidade.Uf = Dr.GetString(2);
                    
                 }
             }
@@ -162,7 +162,7 @@ namespace ProjetoBackEnd.Data
 
                     cidade.Id = Dr.GetInt32(0);
                     cidade.Nome = Dr.GetString(1);
-                    cidade.Uf = ufData.Obtem(Dr.GetString(2));
+                    cidade.Uf = Dr.GetString(2);
 
                     lista.Add(cidade);
                 }

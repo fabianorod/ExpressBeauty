@@ -13,7 +13,7 @@ namespace ProjetoFrontEnd
 {
     public partial class MostrarFuncionario : System.Web.UI.Page
     {
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             string stringConexao = ConfigurationManager.
                 ConnectionStrings["stringConexao"].ConnectionString;
@@ -25,11 +25,13 @@ namespace ProjetoFrontEnd
                 EmailModel eModel = new EmailModel(stringConexao);
                 TelefoneModel tModel = new TelefoneModel(stringConexao);
                 CidadeModel cdModel = new CidadeModel(stringConexao);
+                UFModel ufModel = new UFModel(stringConexao);
 
                 ProfissionalBeleza pbeleza = pModel.Obtem(id);
                 Telefone telefone = tModel.Obtem(id);
-                Email email = new Email();
-                Cidade cidade = new Cidade();
+                Email email = eModel.Obtem(id);
+                Cidade cidade = cdModel.Obtem(pbeleza.CidadeId);
+                UF uf = ufModel.Obtem(cidade.Uf);
 
                 hdCodigo.Value = id.ToString();
                 lblnome.Text = pbeleza.Nome;
@@ -37,10 +39,28 @@ namespace ProjetoFrontEnd
                 lblendereco.Text = pbeleza.Logradouro;
                 lblidade.Text = pbeleza.DataNascimento.ToString();
                 lblcidade.Text = cidade.Nome;
-                lblmail.Text = email.Endereco;
-                lblmaila.Text = email.Endereco;
-                lbltelefone.Text = telefone.Numero;
-                lbltelefonea.Text = telefone.Numero;
+                lblestado.Text = uf.Nome;
+
+                if (pbeleza.Emails != null || pbeleza.Emails.Count > 0)
+                {
+                    lblmail.Text = pbeleza.Emails[2].Endereco;
+                    if (pbeleza.Emails[3] != null)
+                    {
+                        lblmaila.Text = pbeleza.Emails[3].Endereco;
+                    }
+                }
+
+                if (pbeleza.Telefones != null || pbeleza.Telefones.Count > 0)
+                {
+                    lbltelefone.Text = pbeleza.Telefones[0].Numero;
+                    lbltelefonet.Text = pbeleza.Telefones[0].Numero;
+                    if (pbeleza.Emails[1] != null)
+                    {
+                        lbltelefonea.Text = pbeleza.Telefones[1].Numero;
+                        lbltelefoneat.Text = pbeleza.Telefones[1].Numero;
+                    }
+                }
+
                 lblsalario.Text = pbeleza.Salario.ToString();
 
 

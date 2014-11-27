@@ -25,11 +25,13 @@ namespace ProjetoFrontEnd
                 EmailModel eModel = new EmailModel(stringConexao);
                 TelefoneModel tModel = new TelefoneModel(stringConexao);
                 CidadeModel cdModel = new CidadeModel(stringConexao);
+                UFModel ufModel = new UFModel(stringConexao);
 
                 Cliente cliente = cModel.Obtem(id);
                 Telefone telefone = tModel.Obtem(id);
                 Email email = eModel.Obtem(id);
-                Cidade cidade = new Cidade();
+                Cidade cidade = cdModel.Obtem(cliente.CidadeId);
+                UF uf = ufModel.Obtem(cidade.Uf);
 
                 hdCodigo.Value = id.ToString();
                 lblnome.Text = cliente.Nome;
@@ -37,10 +39,31 @@ namespace ProjetoFrontEnd
                 lblendereco.Text = cliente.Logradouro;
                 lblidade.Text = cliente.DataNascimento.ToString();
                 lblcidade.Text = cidade.Nome;
-                //lblmail.Text = email.Endereco;
-                //lblmaila.Text = email.Endereco;
-                //lbltelefone.Text = telefone.Numero;
-                //lbltelefonea.Text = telefone.Numero;
+                lblestado.Text = uf.Nome;
+
+                if (cliente.Emails != null || cliente.Emails.Count > 0) 
+                {
+                    lblmail.Text = cliente.Emails[0].Endereco;
+                    if (cliente.Emails[1] != null) 
+                    {
+                        lblmaila.Text = cliente.Emails[1].Endereco;
+                    }
+                }
+
+                if (cliente.Telefones != null || cliente.Telefones.Count > 0)
+                {
+                    lbltelefone.Text = cliente.Telefones[0].Numero;
+                    lbltelefonet.Text = cliente.Telefones[0].Tipo;
+                    if (cliente.Telefones[1] != null)
+                    {
+                        lbltelefonea.Text = cliente.Telefones[1].Numero;
+                        lbltelefoneat.Text = cliente.Telefones[1].Tipo;
+                    }
+                }
+
+
+                
+
                 lblcep.Text = cliente.Cep;
                 lblstatus.Text = cliente.Status.ToString();
 

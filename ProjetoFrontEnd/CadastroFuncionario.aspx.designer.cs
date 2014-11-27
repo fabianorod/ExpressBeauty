@@ -346,21 +346,21 @@ namespace ProjetoFrontEnd {
         protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
         
         /// <summary>
-        /// btnSalvarCliente control.
+        /// btnSalvarFuncionario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvarCliente;
+        protected global::System.Web.UI.WebControls.Button btnSalvarFuncionario;
         
         /// <summary>
-        /// btnCancelarCliente control.
+        /// btnCancelarFuncionario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarCliente;
+        protected global::System.Web.UI.WebControls.Button btnCancelarFuncionario;
     }
 }

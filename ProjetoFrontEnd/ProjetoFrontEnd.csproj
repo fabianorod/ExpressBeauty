@@ -72,6 +72,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.11.1.min.js" />
+    <Content Include="ListaAgendamento.aspx" />
     <Content Include="ListaCliente.aspx" />
     <Content Include="ListaFuncionario.aspx" />
     <Content Include="ListaServico.aspx" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="CadastroServico.aspx.designer.cs">
       <DependentUpon>CadastroServico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaAgendamento.aspx.cs">
+      <DependentUpon>ListaAgendamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaAgendamento.aspx.designer.cs">
+      <DependentUpon>ListaAgendamento.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaCliente.aspx.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>

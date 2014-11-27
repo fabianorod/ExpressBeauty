@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using ProjetoBackEnd.Entity;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ProjetoBackEnd.Data
 {
@@ -78,22 +79,33 @@ namespace ProjetoBackEnd.Data
             return ok;
         }
 
-        public bool Excluir(AgendamentoServico agendamentoservico)
+        public bool Excluir(Agendamento agendamento)
         {
             bool ok = false;
+            SqlTransaction tran = null;
 
             try
             {
+                tran = Cnn.BeginTransaction();
                 Cmd = new SqlCommand();
                 Cmd.Connection = Cnn;
+                Cmd.Transaction = tran;
 
                 Cmd.CommandText =
-                    @"delete from agendamentos_servicos where agendamento_numero = @agendamento_numero, servico_id";
+                    @"delete from agendamentos_servicos where agendamento_numero = @agendamento_numero";
 
-                Cmd.Parameters.AddWithValue("@agendamento_numero", agendamentoservico.Agendamento);
-                Cmd.Parameters.AddWithValue("@servico_id", agendamentoservico.Servicos);
+                Cmd.Parameters.AddWithValue("@agendamento_numero", agendamento.Id);
 
                 Cmd.ExecuteNonQuery();
+
+                Cmd.CommandText =
+                    @"delete from agendamentos where id = @id";
+
+                Cmd.Parameters.AddWithValue("@id", agendamento.Id);
+
+                Cmd.ExecuteNonQuery();
+
+                tran.Commit();
 
                 ok = true;
             }

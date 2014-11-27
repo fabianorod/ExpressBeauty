@@ -43,7 +43,7 @@
                     <asp:label runat="server" for="lblendereco" class="col-md-2 control-label">Address:</asp:label>
                     <div class="col-md-10">
                         <asp:textbox runat="server" type="text" class="form-control" id="txtendereco"
-                                placeholder="Type his/her adress"/>
+                                placeholder="Type his/her address"/>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtendereco"   runat="server" ErrorMessage="Field Adress required" ForeColor="#FF3300">*Field Adress required</asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <asp:label runat="server" for="lblcep" class="col-md-2 control-label">Zipcode:</asp:label>
                     <div class="col-md-10">
                         <asp:textbox runat="server" type="text" class="form-control" id="txtcep"
-                                placeholder="Type his/her postcode"/>
+                                placeholder="Type his/her zipcode"/>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtcep"   runat="server" ErrorMessage="Field Postcode required" ForeColor="#FF3300">*Field Postcode required</asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -195,8 +195,8 @@
             <br />
                 <div class="form-group"> 
                     <div class="col-md-offset-2 col-md-10">
-                        <asp:button runat="server" type="submit" class="btn btn-success" Text="Save" ID="btnSalvarCliente" OnClick="btnSalvar_Click"/>
-                        <asp:button runat="server" type="reset" class="btn btn-danger" Text="Cancel" ID="btnCancelarCliente" CausesValidation="false" OnClick="btnCancelar_Click"/>
+                        <asp:button runat="server" type="submit" class="btn btn-success" Text="Save" ID="btnSalvarFuncionario" OnClick="btnSalvar_Click"/>
+                        <asp:button runat="server" type="reset" class="btn btn-danger" Text="Cancel" ID="btnCancelarFuncionario" CausesValidation="false" OnClick="btnCancelar_Click"/>
                     </div>
                 </div>
             </form>

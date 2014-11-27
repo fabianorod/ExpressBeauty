@@ -34,11 +34,11 @@ namespace ProjetoBackEnd.Model
             }
         }
 
-        public bool Excluir(AgendamentoServico agendamentoservico)
+        public bool Excluir(Agendamento agendamento)
         {
             using (AgendamentoServicoData data = new AgendamentoServicoData(stringConexao))
             {
-                return data.Excluir(agendamentoservico);
+                return data.Excluir(agendamento);
             }
         }
 

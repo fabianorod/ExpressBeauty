@@ -31,7 +31,7 @@
                     <asp:HyperLink ID="hlExibir" runat="server"
                         NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "Id", 
                                  "MostrarServico.aspx?ID={0}") %>' meta:resourcekey="hlExibirResource1">
-                        Exibir
+                        Show
                     </asp:HyperLink>
                 </td>
             </tr>

@@ -70,8 +70,13 @@ namespace ProjetoFrontEnd
                 pbeleza.Sexo = 2;
             }
 
+            pbeleza.CidadeId = Convert.ToInt32(cbxCidades.SelectedValue);
+
             pbeleza.Cep = txtcep.Text;
+            pbeleza.NomeUsuario = txtnomeu.Text;
+            pbeleza.Senha = txtsenha.Text;
             pbeleza.Salario = Convert.ToDecimal(txtsalario.Text);
+            pbeleza.TipoPermicao = 1;
 
             Telefone tel1 = new Telefone();
             tel1.Numero = txttelefone.Text;
@@ -91,6 +96,8 @@ namespace ProjetoFrontEnd
             {
                 le.Add(new Email(txtmaila.Text, pbeleza));
             }
+
+            pbeleza.Emails = le;
 
 
             string strCnn = ConfigurationManager.ConnectionStrings["stringConexao"].ConnectionString;

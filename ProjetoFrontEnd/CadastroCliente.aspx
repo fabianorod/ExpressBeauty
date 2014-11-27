@@ -37,10 +37,10 @@
                     </div>
                 </div>
             <div class="form-group"> 
-                    <asp:label runat="server" for="lblendereco" class="col-md-2 control-label">Adress:</asp:label>
+                    <asp:label runat="server" for="lblendereco" class="col-md-2 control-label">Address:</asp:label>
                     <div class="col-md-10">
                         <asp:textbox runat="server" type="text" class="form-control" id="txtendereco"
-                                placeholder="Type your adress"/>
+                                placeholder="Type your address"/>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtendereco"   runat="server" ErrorMessage="Field Adress required" ForeColor="#FF3300">*Field Adress required</asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <asp:label runat="server" for="lblcep" class="col-md-2 control-label">Zipcode:</asp:label>
                     <div class="col-md-10">
                         <asp:textbox runat="server" type="text" class="form-control" id="txtcep"
-                                placeholder="Type your postcode"/>
+                                placeholder="Type your zipcode"/>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtcep"   runat="server" ErrorMessage="Field Postcode required" ForeColor="#FF3300">*Field Postcode required</asp:RequiredFieldValidator>
                     </div>
                 </div>

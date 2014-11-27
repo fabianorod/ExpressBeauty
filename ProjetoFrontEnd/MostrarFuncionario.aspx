@@ -47,6 +47,16 @@
                     <asp:label runat="server" id="lblendereco" class="col-md-10 control-label"></asp:label>
                     </div>
             <br />
+
+            <div class="form-group">
+                <asp:label runat="server" id="estado" class="col-md-2 control-label">State:</asp:label>
+                    <div class="form-group">
+                <asp:label runat="server" id="lblestado" class="col-md-10 control-label"></asp:label>
+                    </div>
+                    </div>
+                
+               <br /> 
+
                 <div class="form-group">
                 <asp:label runat="server" id="cidade" class="col-md-2 control-label">City:</asp:label>
                     <div class="form-group">

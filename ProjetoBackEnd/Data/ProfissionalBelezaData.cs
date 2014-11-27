@@ -34,7 +34,7 @@ namespace ProjetoBackEnd.Data
                 Cmd.Connection = Cnn;
 
                 Cmd.CommandText =
-                    @"select * from pessoas p, profissionaisbeleza pb where p.id = pb.pessoa_id and p.id = @id";
+                    @"select * from pessoas p, profissionaisbeleza pb where p.id = pb.pessoa_id";
 
                 Cmd.Parameters.AddWithValue("@pessoa_id", pessoa);
 
@@ -61,23 +61,10 @@ namespace ProjetoBackEnd.Data
 
                     //codigo para obter telefone
                     TelefoneData tData = new TelefoneData(strCnn);
-                    //foreach (Telefone tel in pbeleza.Telefones)
-                    //{
-                    //    telefone.Pessoa = pbeleza;//pessoaData.Obtem(Dr.GetInt32(0));
-                    //    telefone.Numero = Dr.GetString(1);
-                    //}
-                    //codigo para obter email
-
-                    //recuperar telefones da pessoa
                     pbeleza.Telefones = tData.ListarPorPessoa(pessoa);
 
 
                     EmailData eData = new EmailData(strCnn);
-                    //foreach (Email em in pbeleza.Emails)
-                    //{
-                    //    email.Endereco = Dr.GetString(0);
-                    //}
-
                     pbeleza.Emails = eData.ListarPorPessoa(pessoa);
                 }
             }

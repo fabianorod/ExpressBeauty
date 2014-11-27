@@ -68,9 +68,10 @@
               <li><a href="CadastroFuncionario.aspx">Register Professional</a></li>
               <li><a href="CadastroServico.aspx">Register Service</a></li>
               <li><a href="AdicionarHorario.aspx">Schedule an Appoitment</a></li>
-              <li><a href="ListaCliente.aspx">List of Costumers</a></li>
-              <li><a href="ListaFuncionario.aspx">List of Professionals</a></li>
-              <li><a href="ListaServico.aspx">List of Services</a></li>
+              <li><a href="ListaCliente.aspx">Costumers List</a></li>
+              <li><a href="ListaFuncionario.aspx">Professionals List</a></li>
+              <li><a href="ListaServico.aspx">Services List</a></li>
+              <li><a href="ListaAgendamento.aspx">Appointment List</a></li>
               
             </ul>
           </div><!--/.nav-collapse -->
